@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090e">
+<title>FLAP — Phone Verification</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="demo">
+  <header class="topbar">
+    <div class="traffic"><i></i><i></i><i></i></div>
+    <div class="brand">FLAP <span>· HTML · CSS · JS</span></div>
+    <div class="top-right">secure / flow</div>
+  </header>
+
+  <section class="stage">
+    <div class="verification-card" id="verificationCard">
+      <div class="card-content">
+        <div class="step-mark" id="stepMark"><span></span><span></span><span></span></div>
+        <h1 id="title">Check your phone</h1>
+        <p class="intro" id="intro">Enter the 4-digit code we sent to <strong>+1 415 ••• •0142</strong>.</p>
+
+        <form id="otpForm" autocomplete="one-time-code">
+          <div class="otp-inputs" id="otpInputs" aria-label="4 digit verification code">
+            <input class="otp-box active" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 1" autocomplete="one-time-code" autofocus>
+            <input class="otp-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 2">
+            <input class="otp-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 3">
+            <input class="otp-box" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 4">
+          </div>
+          <p class="status" id="status" aria-live="polite"> </p>
+          <button class="resend" type="button" id="resendButton"><span>◉</span> Resend code in <b id="countdown">0:29</b></button>
+        </form>
+
+        <div class="success-panel" id="successPanel" hidden>
+          <div class="success-code"><span>D</span><span>O</span><span>N</span><span>E</span></div>
+          <button type="button" class="continue-button" id="continueButton">Continue</button>
+        </div>
+      </div>
+    </div>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+  </section>
+
+  <section class="code-strip" aria-label="Code examples">
+    <article class="code-card html-code">
+      <h2><i></i>index.html</h2>
+      <pre><code><tag>&lt;div</tag> class=<str>"otp-inputs"</str><tag>&gt;</tag>
+  <tag>&lt;input</tag> maxlength=<str>"1"</str>
+    inputmode=<str>"numeric"</str><tag>&gt;</tag>
+  <tag>&lt;input</tag> maxlength=<str>"1"</str><tag>&gt;</tag>
+  <tag>&lt;input</tag> maxlength=<str>"1"</str><tag>&gt;</tag>
+  <tag>&lt;input</tag> maxlength=<str>"1"</str><tag>&gt;</tag>
+<tag>&lt;/div&gt;</tag></code></pre>
+    </article>
+    <article class="code-card css-code">
+      <h2><i></i>style.css</h2>
+      <pre><code><sel>.otp-box</sel> {
+  width: 42px;
+  height: 48px;
+  border-radius: 8px;
+  background: #242635;
+  border: 1px solid #34364a;
+}
+<sel>.otp-box:focus</sel> {
+  border-color: #f0b84e;
+  box-shadow: 0 0 16px #f0b84e66;
+}</code></pre>
+    </article>
+    <article class="code-card js-code">
+      <h2><i></i>script.js</h2>
+      <pre><code><kw>const</kw> inputs = document
+ .querySelectorAll(<str>'.otp-box'</str>);
+inputs.forEach((input, index) => {
+ input.addEventListener(<str>'input'</str>, () => {
+  <kw>if</kw> (input.value) inputs[index+1]?.focus();
+ });
+});</code></pre>
+    </article>
+  </section>
+  <footer><span class="footer-dot"></span> Demo verification flow <span class="footer-note">No SMS is sent</span></footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
